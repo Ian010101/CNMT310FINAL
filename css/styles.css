@@ -1,0 +1,30 @@
+.loginBody {
+    background-color: #f5f5f5;
+}
+
+a.purple {
+    color: #9302E7;
+}
+
+a.purple:hover {
+    color: #7B00C2;
+}
+
+.purpleButton { 
+    background-color: #9302E7;
+    color: #FFFFFF;
+}
+
+.purpleButton:hover {
+    background-color: #7B00C2;
+    color: #FFFFFF;
+}
+
+.inputFocus:focus {
+    border-color: #9302E7;
+    box-shadow: 0px 0px 5px 1px rgb(147, 2, 231, .25);
+}
+
+.bookmarkTitle {
+    color: #9302E7;
+}
