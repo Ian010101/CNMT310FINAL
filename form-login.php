@@ -12,7 +12,10 @@ print $page->getTopSection();
     print '</div>';
   print '</nav>';
     
-  //Login Form  
+  // -----------Login Form----------------  
+  // Username: id="username" name="username"
+  // Password: id="password" name="password"
+  // Submit Button: id="btn_submit" name="submit"
   print '<div class="d-flex justify-content-center align-items-center mt-5">';
     print '<div class="container">';
       print '<div class="row d-flex justify-content-center">';
@@ -26,14 +29,14 @@ print $page->getTopSection();
                 print '</div>';
                 print '<div class="mb-3">';
                   print '<label for="username" class="form-label ">Username</label>';
-                  print '<input type="username" class="form-control inputFocus" id="username" placeholder="Enter your username">';
+                  print '<input type="username" class="form-control inputFocus" id="username" name ="username" placeholder="Enter your username">';
                 print '</div>';
                 print '<div class="mb-3">';
                   print '<label for="password" class="form-label ">Password</label>';
-                  print '<input type="password" class="form-control inputFocus" id="password" placeholder="Enter your password">';
+                  print '<input type="password" class="form-control inputFocus" id="password" name="password" placeholder="Enter your password">';
                 print '</div>';
                 print '<div class="d-grid">';
-                  print '<button class="btn purpleButton" type="submit">Login</button>';
+                  print '<button class="btn purpleButton" type="submit" id="btn_submit" name="submit">Login</button>';
                 print '</div>';
               print '</form>';
               print '<div>';
