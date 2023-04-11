@@ -1,8 +1,9 @@
 <?php
 
+require_once("autoload.php");
 require_once("WebServiceClient.php");
-require_once("usr_creds.php");
-//require_once(__DIR__ . "/../creds.php");
+//require_once("usr_creds.php");
+require_once(__DIR__ . "/../creds.php");
 
 // set API endpoint url
 $url = "https://cnmt310.classconvo.com/bookmarks/";
@@ -48,7 +49,7 @@ if (isset($_POST["submit"])) {
     // check if login was successful
     if ($obj->result == "Success") {
         // redirect user to welcome page
-        header("Location: welcome_test.php");
+        header("Location: welcome_test.php"); //Change to BOOKMARKS 
         exit();
     } else {
         // output result message
