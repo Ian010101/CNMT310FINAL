@@ -20,6 +20,11 @@ a.purple:hover {
     color: #FFFFFF;
 }
 
+.purpleButton:active {
+    background-color: #9302E7;
+    color: #FFFFFF;
+}
+
 .inputFocus:focus {
     border-color: #9302E7;
     box-shadow: 0px 0px 5px 1px rgb(147, 2, 231, .25);
