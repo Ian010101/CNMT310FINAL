@@ -6,7 +6,6 @@ $page = new SitePage("Homepage");
 
 print $page->getTopSection();
 
-
   //Navigation Bar
   print '<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">';
     print '<div class="container-fluid mx-5 px-5 py-2">';
@@ -20,21 +19,26 @@ print $page->getTopSection();
             print '<a class="nav-link active" aria-current="page" href="' . HOME . '">Home</a>';
           print '</li>';
 
-          /* If logged in add the My Bookmarks link to navigation  
+          // If logged in add the My Bookmarks link to navigation  
+          if (isset($_SESSION['id'])) {
               print '<li class="nav-item px-2">';
                 print '<a class="nav-link" href="' . BOOKMARKS . '">My Bookmarks</a>';
               print '</li>';
-          */
 
-          print '<li class="nav-item px-2">';
-            print '<button class="btn btn-outline-light" href="' . LOGIN . '">Login</button>'; 
-          print '</li>';
+          }
 
-          /* If logged in change Login button to Logout button : 
-              print '<li class="nav-item px-2">';
-                print '<button class="btn btn-outline-light" href="' . LOGOUT . '">Logout</button>';
-              print '</li>';
-          */ 
+          // Updated the <button> to <a> to fix redirects 
+          // If logged in change Login button to Logout button 
+          if (isset($_SESSION['id'])) {
+            print '<li class="nav-item px-2">';
+              print '<a class="btn btn-outline-light" href="' . LOGOUT . '">Logout</a>';
+            print '</li>';
+          } else {
+            // If not logged in, display Login button
+            print '<li class="nav-item px-2">';
+              print '<a class="btn btn-outline-light" href="' . LOGIN . '">Login</a>'; 
+            print '</li>';
+          }
 
         print '</ul>';
       print '</div>';
