@@ -23,7 +23,8 @@ print $page->getTopSection();
         print '<div class="col-12 col-md-8 col-lg-6">';
           print '<div class="card bg-white">';
             print '<div class="card-body p-5">';
-              print '<form class="mb-3 mt-md-4">';
+              // upadted to use action-login file for processing
+              print '<form class="mb-3 mt-md-4" action="action-login.php" method = "post">';
                 print '<div class="text-center">';
                   print '<h2 class="fw-bold mb-2">Login to your account</h2>';
                   print '<p class=" mb-5">Welcome back! Please enter in your details.</p>';
