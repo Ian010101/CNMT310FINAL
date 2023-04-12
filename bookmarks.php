@@ -2,6 +2,12 @@
 
 require_once("autoload.php");
 require_once("classes/SitePage.class.php");
+
+// check if the user is not logged in
+if (!isset($_SESSION['id'])) {
+    die(header("Location: " . LOGIN));
+} 
+
 $page = new SitePage("Homepage");
 
 print $page->getTopSection();
@@ -22,14 +28,12 @@ print $page->getTopSection();
                         print '<a class="nav-link active" aria-current="page" href="#">My Bookmarks</a>';
                     print '</li>';
                     print '<li class="nav-item px-2">';
-                        print '<button class="btn btn-outline-light" href="#">Logout</button>';
+                    print '<a class="btn btn-outline-light" href="' . LOGOUT . '">Logout</a>'; 
                     print '</li>';
                 print '</ul>';
             print '</div>';
         print '</div>';
     print '</nav>';
-    
-
 
     // Search bar
     print '<div class="d-flex justify-content-center align-items-center mt-5">'; 
