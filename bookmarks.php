@@ -8,7 +8,7 @@ if (!isset($_SESSION['id'])) {
     die(header("Location: " . LOGIN));
 } 
 
-$page = new SitePage("Homepage");
+$page = new SitePage("Bookmarks");
 
 print $page->getTopSection();
 
@@ -52,26 +52,58 @@ print $page->getTopSection();
     print '</div>'; 
     
     // Add bookmark button 
-    print '<div class="d-flex justify-content-center align-items-center mt-5">';
+    print '<div class="d-flex justify-content-center align-items-center mt-5 mb-3">';
         print '<div class="container">';
             print '<div class="row d-flex justify-content-center">';
                 print '<div class="col-12 col-md-8 col-lg-10">';
-                    print '<button class="btn purpleButton" type="submit">+ Add Bookmark</button>';
+                    print '<button class="btn purpleButton" type="submit" data-bs-toggle="modal" data-bs-target="#createModal">+ Add Bookmark</button>';
                 print '</div>';
             print '</div>';
         print '</div>';
     print '</div>';
 
+    // Add bookmark modal 
+    print '<div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">';
+        print '<div class="modal-dialog modal-lg">';
+            print '<div class="modal-content">';
+                print '<div class="modal-body p-4">';
+                    print '<button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Cancel"></button>';
+                    print '<form class="mb-3 mt-md-2" action="#" method = "post">';
+                        print '<div class="text-center">';
+                            print '<h3 class="fw-bold mb-3">Add Bookmark</h3>';
+                        print '</div>';
+                        print '<div class="mb-3">';
+                        print '<label for="title" class="form-label ">Title</label>';
+                            print '<input type="text" class="form-control inputFocus" id="title" placeholder="Bookmark title" required>';
+                        print '</div>';
+                        print '<div class="mb-3">';
+                            print '<label for="url" class="form-label ">Enter an https:// URL</label>';
+                            print '<input type="url" class="form-control inputFocus" id="url" placeholder="https://example.com" required>';
+                        print '</div>';
+                        print '<div class="float-end">';
+                            print '<button type="button" class="btn purpleOutlineBtn" data-bs-dismiss="modal">Cancel</button>';
+                            print '<button type="submit" class="btn purpleButton">Add</button>';
+                        print '</div>';
+                    print '</form>';
+                print '</div>';
+            print '</div>';
+        print '</div>';
+    print '</div>';
+
+
     // Bookmark card 
-    print '<div class="d-flex justify-content-center align-items-center mt-3">';
+    print '<div class="d-flex justify-content-center align-items-center mb-2">';
         print '<div class="container">';
             print '<div class="row d-flex justify-content-center">';
                 print '<div class="col-12 col-md-8 col-lg-10">';
                     print '<div class="card bg-white">';
-                        print '<div class="card-body p-2">';
+                        print '<div class="card-body p-3">';
                             print '<div>';
+                                print '<div class="float-end">';
+                                    print '<button type="button" class="btn btn-light"><img class="deleteIcon" src="images/deleteIcon.png">&nbsp;&nbsp;Delete</button>';
+                                print '</div>';
                                 print '<h5 class="bookmarkTitle">Bookmark Title</h5>';
-                                print '<p>Bookmark URL</p>';
+                                print 'Bookmark URL';
                             print '</div>';
                         print '</div>';    
                     print '</div>';
