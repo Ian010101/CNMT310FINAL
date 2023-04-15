@@ -1,3 +1,7 @@
+label {
+    font-weight: 500;
+}
+
 .loginBody {
     background-color: #f5f5f5;
 }
@@ -25,6 +29,18 @@ a.purple:hover {
     color: #FFFFFF;
 }
 
+.purpleOutlineBtn {
+    background-color: #FFFFFF;
+    border-color: #9302E7;
+    color: #9302E7;
+}
+
+.purpleOutlineBtn:hover {
+    background-color: #9302E7;
+    border-color: #9302E7;
+    color: #ffffff;
+}
+
 .inputFocus:focus {
     border-color: #9302E7;
     box-shadow: 0px 0px 5px 1px rgb(147, 2, 231, .25);
@@ -32,4 +48,8 @@ a.purple:hover {
 
 .bookmarkTitle {
     color: #9302E7;
+}
+
+.deleteIcon {
+    padding-bottom: .15rem;
 }
