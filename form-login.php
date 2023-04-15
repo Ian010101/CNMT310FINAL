@@ -30,9 +30,12 @@ print $page->getTopSection();
                   print '<p class=" mb-5">Welcome back! Please enter in your details.</p>';
                 print '</div>';
                 // If errors, print here: 
-                //print '<div>';
-                  // print '<p>[insert error message]</p>';
-                //print '</div>';
+				if(isset($_SESSION['error']) && !empty($_SESSION['error'])) {
+                print '<div>';
+                  print '<p>' .$_SESSION["error"]. '</p>';
+                print '</div>';
+				$_SESSION['error'] = "";
+				}
                 print '<div class="mb-3">';
                   print '<label for="username" class="form-label ">Username</label>';
                   print '<input type="username" class="form-control inputFocus" id="username" name ="username" placeholder="Enter your username">';
