@@ -1,8 +1,5 @@
 <?php
 
-// to do:
-// add error message/replace current error redirect
-
 require_once("autoload.php");
 require_once("WebServiceClient.php");
 
