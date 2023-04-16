@@ -31,7 +31,7 @@ print $page->getTopSection();
                 print '</div>';
                 // If errors, print here: 
 				if(isset($_SESSION['error']) && !empty($_SESSION['error'])) {
-                print '<div>';
+                print '<div class="errorMessage">';
                   print '<p>' .$_SESSION["error"]. '</p>';
                 print '</div>';
 				$_SESSION['error'] = "";
