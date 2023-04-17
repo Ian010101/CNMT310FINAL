@@ -41,6 +41,7 @@ print $page->getTopSection();
             print '<div class="row d-flex justify-content-center">';
                 print '<div class="col-12 col-md-8 col-lg-10">';
                     print '<form class="d-flex">';
+                        // Search bar input and button
                         print '<input class="form-control me-1 inputFocus" type="search" placeholder="Search your bookmarks" aria-label="Search">';
                         print '<button class="btn btn-dark px-4" type="submit">';
                             print '<img src="searchIcon.png">';
@@ -68,20 +69,24 @@ print $page->getTopSection();
             print '<div class="modal-content">';
                 print '<div class="modal-body p-4">';
                     print '<button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Cancel"></button>';
-                    print '<form class="mb-3 mt-md-2" action="#" method = "post">';
+                    // Add bookmark form - NEEDS ACTION
+                    print '<form class="mb-3 mt-md-2" action="#" method="post">';
                         print '<div class="text-center">';
                             print '<h3 class="fw-bold mb-3">Add Bookmark</h3>';
                         print '</div>';
                         print '<div class="mb-3">';
-                        print '<label for="title" class="form-label ">Title</label>';
+                            // Bookmark title input field 
+                            print '<label for="title" class="form-label ">Title</label>';
                             print '<input type="text" class="form-control inputFocus" id="title" placeholder="Bookmark title" required>';
                         print '</div>';
                         print '<div class="mb-3">';
-                            print '<label for="url" class="form-label ">Enter an https:// URL</label>';
+                            // Bookmark URL input field - Added some very basic form validation using type="url" (can consider adding more complicated validation methods that might provide a better experience)
+                            print '<label for="url" class="form-label ">Link</label>';
                             print '<input type="url" class="form-control inputFocus" id="url" placeholder="https://example.com" required>';
                         print '</div>';
                         print '<div class="float-end">';
                             print '<button type="button" class="btn purpleOutlineBtn" data-bs-dismiss="modal">Cancel</button>';
+                            // Form submit button 
                             print '<button type="submit" class="btn purpleButton">Add</button>';
                         print '</div>';
                     print '</form>';
@@ -100,10 +105,13 @@ print $page->getTopSection();
                         print '<div class="card-body p-3">';
                             print '<div>';
                                 print '<div class="float-end">';
+                                    // Delete bookmark button 
                                     print '<button type="button" class="btn btn-light"><img class="deleteIcon" src="images/deleteIcon.png">&nbsp;&nbsp;Delete</button>';
                                 print '</div>';
-                                print '<h5 class="bookmarkTitle">Bookmark Title</h5>';
-                                print 'Bookmark URL';
+                                // Bookmark title
+                                print '<h5 class="bookmarkTitle">[Insert Bookmark Title Here]</h5>';
+                                // Bookmark url 
+                                print '<span>[Insert Bookmark URL Here]</span>';
                             print '</div>';
                         print '</div>';    
                     print '</div>';
