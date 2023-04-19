@@ -52,6 +52,20 @@ a.purple:hover {
 
 .bookmarkTitle {
     color: #9302E7;
+    text-decoration: none;
+}
+
+.bookmarkTitle:hover {
+    color: #7B00C2
+}
+
+.bookmarkURL {
+    color: #000000;
+    text-decoration: none;
+}
+
+.bookmarkURL:hover {
+    text-decoration: underline;
 }
 
 .deleteIcon {
