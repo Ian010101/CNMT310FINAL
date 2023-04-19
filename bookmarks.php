@@ -109,9 +109,9 @@ print $page->getTopSection();
                                     print '<button type="button" class="btn btn-light"><img class="deleteIcon" src="images/deleteIcon.png">&nbsp;&nbsp;Delete</button>';
                                 print '</div>';
                                 // Bookmark title
-                                print '<h5 class="bookmarkTitle">[Insert Bookmark Title Here]</h5>';
+                                print '<a href="#" class="bookmarkTitle"><h5>[Bookmark Title]</h5></a>';
                                 // Bookmark url 
-                                print '<span>[Insert Bookmark URL Here]</span>';
+                                print '<a href="#" class="bookmarkURL"><span>[Bookmark URL]</span></a>';
                             print '</div>';
                         print '</div>';    
                     print '</div>';
