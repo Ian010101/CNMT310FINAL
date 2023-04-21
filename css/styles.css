@@ -1,5 +1,30 @@
-errorMessage {
+.errorMessage {
     color: #F44336; 
+}
+
+.bg-image {
+    background-image: url("nightsky.jpg");
+    height: 100vh;
+}
+
+.darkBackground {
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.homeDivider {
+    color: #9302E7;
+    width: 12%;
+    border-width: 6px;
+    opacity: 100%;
+}
+
+.sparkBranding {
+    align-items: center;
+    display: flex;
+}
+
+.homepageText {
+    font-weight: 400;
 }
 
 label {
