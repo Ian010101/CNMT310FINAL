@@ -7,9 +7,10 @@ $page = new SitePage("Homepage");
 print $page->getTopSection();
 
   //Navigation Bar
+  print '<div class="bg-image">';
   print '<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">';
     print '<div class="container-fluid mx-5 px-5 py-2">';
-      print '<a class="navbar-brand" href="' . HOME . '">Project Name</a>';
+      print '<a class="navbar-brand sparkBranding" href="' . HOME . '"><img src="images/logo.png" width="50" height="50" class="d-inline-block align-top mx-2">Spark</a>';
       print '<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">';
         print '<span class="navbar-toggler-icon"></span>';
       print '</button>';
@@ -45,7 +46,20 @@ print $page->getTopSection();
     print '</div>';
   print '</nav>';
 
-    
+
+  // Main Content
+  print '<div class="container col-xxl-8 px-4 py-5">';
+    print '<div class="row flex-lg-row-reverse align-items-center g-5 py-5">';
+      print '<div class="col-10 col-sm-8 col-lg-6">';
+      print '</div>';
+      print '<div class="col-lg-6 p-5 darkBackground">';
+        print '<h1 class="display-5 fw-bold lh-1 mb-3 text-white">Catch the spark</h1>';
+        print '<hr class="homeDivider" />';
+        print '<p class="lead text-white homepageText">Transform a spark of inspiration into a steady flame with our bookmark manager. With our tool you can add multiple bookmark links, search for the spark you need, and delete what no longer catches your interest.</p>';
+      print '</div>';
+    print '</div>';
+  print '</div>';
+
   //Footer
   print '<footer class="footer mt-auto py-3 bg-dark fixed-bottom">';
     print '<div class="container py-2 text-center">';
