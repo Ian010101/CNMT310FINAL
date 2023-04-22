@@ -4,7 +4,7 @@ require_once("autoload.php");
 require_once("getbookmarks.php");
 require_once("classes/SitePage.class.php");
 
-// check if the user is not logged in
+// Check if the user is logged in
 if (!isset($_SESSION['id'])) {
     die(header("Location: " . LOGIN));
 } 
