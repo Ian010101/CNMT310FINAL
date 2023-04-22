@@ -1,8 +1,5 @@
 <?php
 
-// to do:
-// add error message/replace current error redirect
-
 require_once("autoload.php");
 require_once("WebServiceClient.php");
 
@@ -42,7 +39,7 @@ if (isset($_POST["submit"])) {
     if (!property_exists($obj,"result")) {
         die(print("Error, no result property"));
     }
-    
+    $invalidCreds = "";
     // check if login was successful
     if ($obj->result == "Success") {
         $_SESSION['loggedIn'] = true;
@@ -50,7 +47,8 @@ if (isset($_POST["submit"])) {
         $_SESSION["id"] = $obj->data->id;
         die(header("Location: " . BOOKMARKS));
     } else {
-        // output result message
-        print $obj->result;
+        // output result stored in session variable, then goes to LOGIN and is displayed there
+		$_SESSION['error'] = 'Username or password is incorrect, please try again.';
+		die(header("Location: " . LOGIN));
     }
 }
