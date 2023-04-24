@@ -1,8 +1,5 @@
 <?php
 
-// create function for bookmarks page (should add a new bookmark card for bookmarks)
-// 
-
 require_once("autoload.php");
 require_once("WebServiceClient.php");
 
