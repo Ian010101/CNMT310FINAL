@@ -102,7 +102,7 @@ print $page->getTopSection();
 	// Generate HTML for bookmark cards
 	generateBookmarkCards($bookmarks);
     // Footer 
-    print '<footer class="footer mt-auto py-3 bg-dark fixed-bottom">';
+    print '<footer class="footer mt-auto py-3 bg-dark">';
         print '<div class="container py-2 text-center">';
             print '<span class="text-white-50 ">Copyright 2023</span>';
         print '</div>';
