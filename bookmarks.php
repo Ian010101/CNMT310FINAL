@@ -2,6 +2,7 @@
 
 require_once("autoload.php");
 require_once("getbookmarks.php");
+require_once("bookmarkcards.php");
 require_once("classes/SitePage.class.php");
 
 // Check if the user is logged in
@@ -71,7 +72,7 @@ print $page->getTopSection();
                 print '<div class="modal-body p-4">';
                     print '<button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Cancel"></button>';
                     // Add bookmark form - uses addbookmark.php
-                    print '<form class="mb-3 mt-md-2" action="addbookmark.php" method="post">';
+                    print '<form class="mb-3 mt-md-2" action="addBookmark.php" method="post">';
                         print '<div class="text-center">';
                             print '<h3 class="fw-bold mb-3">Add Bookmark</h3>';
                         print '</div>';
@@ -98,10 +99,8 @@ print $page->getTopSection();
 
 	// Get user's bookmarks from API
 	$bookmarks = getUserBookmarks();
-
 	// Generate HTML for bookmark cards
 	generateBookmarkCards($bookmarks);
-
     // Footer 
     print '<footer class="footer mt-auto py-3 bg-dark fixed-bottom">';
         print '<div class="container py-2 text-center">';
