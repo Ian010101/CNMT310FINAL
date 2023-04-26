@@ -55,7 +55,7 @@ print $page->getTopSection();
       print '<div class="col-lg-6 p-5 darkBackground">';
         print '<h1 class="display-5 fw-bold lh-1 mb-3 text-white">Catch the spark</h1>';
         print '<hr class="homeDivider" />';
-        print '<p class="lead text-white homepageText">Transform a spark of inspiration into a steady flame with our bookmark manager. With our tool you can add multiple bookmark links, search for the spark you need, and delete what no longer catches your interest.</p>';
+        print '<p class="lead text-white homepageText">Transform a spark of inspiration into a steady flame with our bookmark manager. Our tool gives you the ability to store multiple bookmark links, search for the spark you need, and delete what no longer catches your interest.</p>';
       print '</div>';
     print '</div>';
   print '</div>';
