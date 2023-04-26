@@ -87,7 +87,7 @@ print $page->getTopSection();
 							print '<input type="url" class="form-control inputFocus" id="url" name="url" placeholder="https://example.com" required>';
                         print '</div>';
                         print '<div class="float-end">';
-                            print '<button type="button" class="btn purpleOutlineBtn" data-bs-dismiss="modal">Cancel</button>';
+                            print '<button type="button" class="btn purpleOutlineBtn mx-1" data-bs-dismiss="modal">Cancel</button>';
                             // Form submit button 
                             print '<button type="submit" class="btn purpleButton">Add</button>';
                         print '</div>';
