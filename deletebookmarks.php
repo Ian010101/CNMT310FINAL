@@ -6,11 +6,12 @@ require_once("WebServiceClient.php");
 // change name to reflect your user credit file/location
 require_once(__DIR__ . "/../usr_creds.php");
 
+// Check if a bookmark id is set, if not redirect to bookmarks
 if (isset($_GET["bookmarkID"])) {
     $bookmarkID = $_GET["bookmarkID"];
     deleteBookmark($bookmarkID);
 } else {
-    die("Error: Bookmark ID not specified.");
+    die(header("Location: " . BOOKMARKS));
 }
 
 function deleteBookmark($bookmarkID) {
@@ -24,9 +25,9 @@ function deleteBookmark($bookmarkID) {
     $userID = $_SESSION["id"];
     // create data array to send to the API
     $data = array(
-			"bookmark_id" => $bookmarkID, 
-			"user_id" => $userID
-			);
+	"bookmark_id" => $bookmarkID, 
+	"user_id" => $userID
+	);
     
     // set API action and auth fields
     $action = "deletebookmark";
