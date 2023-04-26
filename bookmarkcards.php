@@ -1,12 +1,11 @@
 <?php
-//require_once("deleteBookmarks.php");
+
 // Add redirects to prevent direct access
 
-// Function to create bookmark cards/*
+// Function to create bookmark cards
 function generateBookmarkCards($bookmarks) {
     // Loop through bookmarks array and generate a card for each bookmark
     foreach ($bookmarks as $bookmark) {
-        
         // Bookmark card 
         print '<div class="d-flex justify-content-center align-items-center mb-2">';
             print '<div class="container">';
@@ -17,8 +16,11 @@ function generateBookmarkCards($bookmarks) {
                                 print '<div>';
                                     print '<div class="float-end">';
                                         // Delete bookmark button 
-                                        print '<button type="button" class="btn btn-light" name = "submit"><a href ="deleteBookmarks.php"'. $_SESSION["bookmarkID"] = $bookmark->bookmark_id . '" img class="deleteIcon" src="images/deleteIcon.png">&nbsp;&nbsp;Delete</button>';
-                                       
+                                        print '<button type="button" class="btn btn-light" name="submit">';
+                                            print '<a href="deleteBookmarks.php?bookmarkID=' . $bookmark->bookmark_id . '">';
+                                                print '<img class="deleteIcon" src="images/deleteIcon.png">&nbsp;&nbsp;Delete';
+                                            print '</a>';
+                                        print '</button>';
                                     print '</div>';
                                     // Bookmark title
                                     print '<a href="' . $bookmark->url . '" class="bookmarkTitle"><h5>' . $bookmark->displayname . '</h5></a>';
