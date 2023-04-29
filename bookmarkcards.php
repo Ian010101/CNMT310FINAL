@@ -1,6 +1,9 @@
 <?php
 
-// Add redirects to prevent direct access
+// Redirect if accessed directly
+if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
+    die(header("Location: " . BOOKMARKS));
+}
 
 // Function to create bookmark cards
 function generateBookmarkCards($bookmarks) {
@@ -17,7 +20,7 @@ function generateBookmarkCards($bookmarks) {
                                     print '<div class="float-end">';
                                         // Delete bookmark button 
                                         print '<button type="button" class="btn btn-light" name="submit">';
-                                            print '<a href="deleteBookmarks.php?bookmarkID=' . $bookmark->bookmark_id . '">';
+                                            print '<a href="deletebookmarks.php?bookmarkID=' . $bookmark->bookmark_id . '">';
                                                 print '<img class="deleteIcon" src="images/deleteIcon.png">&nbsp;&nbsp;Delete';
                                             print '</a>';
                                         print '</button>';
