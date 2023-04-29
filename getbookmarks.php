@@ -1,16 +1,14 @@
 <?php
 
-// Add redirects to prevent direct access
-
 require_once("autoload.php");
-require_once("functions.php");
+require_once("bookmarkcards.php");
 require_once("WebServiceClient.php");
 
 // Change to reflect where your user credit file is stored
 require_once(__DIR__ . "/../usr_creds.php");
 
-// Check if user is logged in
-if (!isset($_SESSION["id"])) {
+// Redirect if accessed directly
+if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
     die(header("Location: " . BOOKMARKS));
 }
 
