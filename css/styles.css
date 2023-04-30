@@ -1,3 +1,8 @@
+.deleteButton {
+    color: #000000;
+    text-decoration: none; 
+}
+
 footer {
     position: absolute;
     bottom: 0;
