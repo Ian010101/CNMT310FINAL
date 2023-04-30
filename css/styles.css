@@ -1,3 +1,13 @@
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+input[name="visibility"] {
+	accent-color: #9302E7;
+}
+
 .errorMessage {
     color: #F44336; 
 }
@@ -95,4 +105,8 @@ a.purple:hover {
 
 .deleteIcon {
     padding-bottom: .15rem;
+}
+
+.deleteBtn {
+    text-decoration: none;
 }
