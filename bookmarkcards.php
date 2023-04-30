@@ -20,7 +20,7 @@ function generateBookmarkCards($bookmarks) {
                                     print '<div class="float-end">';
                                         // Delete bookmark button 
                                         print '<button type="button" class="btn btn-light" name="submit">';
-                                            print '<a href="deletebookmarks.php?bookmarkID=' . $bookmark->bookmark_id . '">';
+                                            print '<a class="deleteButton" href="deletebookmarks.php?bookmarkID=' . $bookmark->bookmark_id . '">';
                                                 print '<img class="deleteIcon" src="images/deleteIcon.png">&nbsp;&nbsp;Delete';
                                             print '</a>';
                                         print '</button>';
