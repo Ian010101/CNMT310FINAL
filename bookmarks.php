@@ -10,10 +10,11 @@ if (!isset($_SESSION['id'])) {
     die(header("Location: " . LOGIN));
 } 
 
-$page = new SitePage("Bookmarks");
+$page = new SitePage("My Bookmarks");
 
 print $page->getTopSection();
 
+print '<div class="d-flex flex-column min-vh-100">';
     // Navigation bar 
     print '<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">';
         print '<div class="container-fluid mx-5 px-5 py-2">';
@@ -30,12 +31,16 @@ print $page->getTopSection();
                         print '<a class="nav-link active" aria-current="page" href="#">My Bookmarks</a>';
                     print '</li>';
                     print '<li class="nav-item px-2">';
-                    print '<a class="btn btn-outline-light" href="' . LOGOUT . '">Logout</a>'; 
+                        print '<a class="nav-link active" aria-current="page" href="' . COMMUNITY . '">Community</a>';
+                    print '</li>';
+                    print '<li class="nav-item px-2">';
+                        print '<a class="btn btn-outline-light" href="' . LOGOUT . '">Logout</a>'; 
                     print '</li>';
                 print '</ul>';
             print '</div>';
         print '</div>';
     print '</nav>';
+
 
     // Search bar
     print '<div class="d-flex justify-content-center align-items-center mt-5">'; 
@@ -72,19 +77,25 @@ print $page->getTopSection();
                 print '<div class="modal-body p-4">';
                     print '<button type="button" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Cancel"></button>';
                     // Add bookmark form - uses addbookmark.php
-                    print '<form class="mb-3 mt-md-2" action="addBookmark.php" method="post">';
+                    print '<form class="mb-3 mt-md-2" action="addbookmark.php" method="post">';
                         print '<div class="text-center">';
                             print '<h3 class="fw-bold mb-3">Add Bookmark</h3>';
                         print '</div>';
                         print '<div class="mb-3">';
                             // Bookmark title input field 
                             print '<label for="title" class="form-label ">Title</label>';
-                            print '<input type="text" class="form-control inputFocus" id="title" name="title" placeholder="Bookmark title" required>';
+                            print '<input type="text" class="form-control inputFocus" id="title" maxlength="60" name="title" placeholder="Bookmark title" required>';
                         print '</div>';
                         print '<div class="mb-3">';
                             // Bookmark URL input field - Added some very basic form validation using type="url" (can consider adding more complicated validation methods that might provide a better experience)
                             print '<label for="url" class="form-label ">Link</label>';
 							print '<input type="url" class="form-control inputFocus" id="url" name="url" placeholder="https://example.com" required>';
+                        print '</div>';
+                        print '<div class="mb-3">';
+                            print '<input type="radio" id="private" name="visibility" value="private" checked>';
+                            print '<label for="private">Private</label>&nbsp;&nbsp;&nbsp;';
+                            print '<input type="radio" id="public" name="visibility" value="public">';
+                            print '<label for="public">Public</label>';
                         print '</div>';
                         print '<div class="float-end">';
                             print '<button type="button" class="btn purpleOutlineBtn mx-1" data-bs-dismiss="modal">Cancel</button>';
@@ -101,11 +112,6 @@ print $page->getTopSection();
 	$bookmarks = getUserBookmarks();
 	// Generate HTML for bookmark cards
 	generateBookmarkCards($bookmarks);
-    // Footer 
-    print '<footer class="footer mt-auto py-3 bg-dark">';
-        print '<div class="container py-2 text-center">';
-            print '<span class="text-white-50 ">Copyright 2023</span>';
-        print '</div>';
-    print '</footer>';
+print '</div>';
 
 print $page->getBottomSection();

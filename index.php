@@ -25,7 +25,9 @@ print $page->getTopSection();
               print '<li class="nav-item px-2">';
                 print '<a class="nav-link" href="' . BOOKMARKS . '">My Bookmarks</a>';
               print '</li>';
-
+              print '<li class="nav-item px-2">';
+                print '<a class="nav-link active" aria-current="page" href="' . COMMUNITY . '">Community</a>';
+              print '</li>';
           }
 
           // Updated the <button> to <a> to fix redirects 
@@ -40,7 +42,6 @@ print $page->getTopSection();
               print '<a class="btn btn-outline-light" href="' . LOGIN . '">Login</a>'; 
             print '</li>';
           }
-
         print '</ul>';
       print '</div>';
     print '</div>';
@@ -66,6 +67,5 @@ print $page->getTopSection();
       print '<span class="text-white-50 ">Copyright 2023</span>';
     print '</div>';
   print '</footer>';
-
 
 print $page->getBottomSection();

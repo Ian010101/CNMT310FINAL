@@ -1,9 +1,10 @@
-<?php
+<?php 
 
-session_start();
+session_start(); 
 
-// define constants
-define('HOME', 'index.php');
-define('BOOKMARKS', 'bookmarks.php');
-define('LOGIN', 'form-login.php');
-define('LOGOUT', 'logout.php');
+// CONSTANTS 
+define("HOME", "index.php");
+define("BOOKMARKS", "bookmarks.php");
+define("COMMUNITY", "community.php");
+define("LOGIN", "form-login.php");
+define("LOGOUT", "logout.php");
