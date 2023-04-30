@@ -26,7 +26,7 @@ print $page->getTopSection();
                 print '<a class="nav-link" href="' . BOOKMARKS . '">My Bookmarks</a>';
               print '</li>';
               print '<li class="nav-item px-2">';
-                print '<a class="nav-link active" aria-current="page" href="' . COMMUNITY . '">Community</a>';
+                print '<a class="nav-link" aria-current="page" href="' . COMMUNITY . '">Community</a>';
               print '</li>';
           }
 
