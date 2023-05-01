@@ -26,9 +26,9 @@ function generateBookmarkCards($bookmarks) {
                                         print '</button>';
                                     print '</div>';
                                     // Bookmark title
-                                    print '<a href="' . $bookmark->url . '" class="bookmarkTitle"><h5>' . $bookmark->displayname . '</h5></a>';
+                                    print '<a href="' . $bookmark->url . '" class="bookmarkTitle" target="_blank"><h5>' . $bookmark->displayname . '</h5></a>';
                                     // Bookmark url 
-                                    print '<a href="' . $bookmark->url . '" class="bookmarkURL"><span>' . $bookmark->url . '</span></a>';
+                                    print '<a href="' . $bookmark->url . '" class="bookmarkURL" target="_blank"><span>' . $bookmark->url . '</span></a>';
                                 print '</div>';
                             print '</div>';    
                         print '</div>';
