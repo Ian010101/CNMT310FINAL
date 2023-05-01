@@ -3,6 +3,11 @@
     text-decoration: none; 
 }
 
+.navName {
+    color: #FFFFFF;
+    font-size: 1.25em;
+}
+
 footer {
     position: absolute;
     bottom: 0;
