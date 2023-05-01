@@ -123,8 +123,15 @@ if(isset($_POST['search'])) {
     if(count($matching_bookmarks) > 0) {
         generateBookmarkCards($matching_bookmarks);
     } else {
-		// Update to display properly 
-        print '<p>No matching bookmarks found.</p>';
+        print '<div class="d-flex justify-content-center align-items-center mt-2">';
+            print '<div class="container">';
+                print '<div class="row d-flex justify-content-center">';
+                    print '<div class="col-12 col-md-8 col-lg-10">';
+                        print '<p class="errorMessage justify-content-center">No matching bookmarks found.</p>';
+                    print '</div>';
+                print '</div>';
+            print '</div>';
+        print '</div>';
     }
 } else {
     // Display all bookmarks
@@ -132,8 +139,15 @@ if(isset($_POST['search'])) {
     if(count($bookmarks) > 0) {
         generateBookmarkCards($bookmarks);
     } else {
-		// Update to display properly 
-        print '<p>No bookmarks found.</p>';
+        print '<div class="d-flex justify-content-center align-items-center mt-2">';
+            print '<div class="container">';
+                print '<div class="row d-flex justify-content-center">';
+                    print '<div class="col-12 col-md-8 col-lg-10">';
+                        print '<p class="errorMessage justify-content-center">No bookmarks found.</p>';
+                    print '</div>';
+                print '</div>';
+            print '</div>';
+        print '</div>';
     }
 }
 print '</div>';
