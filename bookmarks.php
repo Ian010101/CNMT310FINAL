@@ -28,7 +28,7 @@ print '<div class="d-flex flex-column min-vh-100">';
                         print '<a class="nav-link" href="' . HOME . '">Home</a>';
                     print '</li>';
                     print '<li class="nav-item px-2">';
-                        print '<a class="nav-link active" aria-current="page" href="#">My Bookmarks</a>';
+                        print '<a class="nav-link active" aria-current="page" href=" '. BOOKMARKS . ' ">My Bookmarks</a>';
                     print '</li>';
                     print '<li class="nav-item px-2">';
                         print '<a class="nav-link" aria-current="page" href="' . COMMUNITY . '">Community</a>';
@@ -42,22 +42,21 @@ print '<div class="d-flex flex-column min-vh-100">';
     print '</nav>';
 
 
-    // Search bar
-    print '<div class="d-flex justify-content-center align-items-center mt-5">'; 
-        print '<div class="container">';
-            print '<div class="row d-flex justify-content-center">';
-                print '<div class="col-12 col-md-8 col-lg-10">';
-                    print '<form class="d-flex">';
-                        // Search bar input and button
-                        print '<input class="form-control me-1 inputFocus" type="search" placeholder="Search your bookmarks" aria-label="Search">';
-                        print '<button class="btn btn-dark px-4" type="submit">';
-                            print '<img src="images/searchIcon.png">';
-                        print '</button>';
-                    print '</form>';
-                print '</div>';
-            print '</div>';
-        print '</div>';
-    print '</div>'; 
+		// Search bar
+	   print '<div class="d-flex justify-content-center align-items-center mt-5">'; 
+		print '<div class="container">';
+			print '<div class="row d-flex justify-content-center">';
+				print '<div class="col-12 col-md-8 col-lg-10">';
+					print '<form class="d-flex" action="searchbookmarks.php" method="post">';						// Search bar input and button
+						print '<input class="form-control me-1 inputFocus" type="search" placeholder="Search your bookmarks" aria-label="Search" name="search_term">';
+						print '<button class="btn btn-dark px-4" type="submit" name="search">';
+							print '<img src="images/searchIcon.png">';
+						print '</button>';
+					print '</form>';
+				print '</div>';
+			print '</div>';
+		print '</div>';
+	print '</div>';
     
     // Add bookmark button 
     print '<div class="d-flex justify-content-center align-items-center mt-5 mb-3">';
@@ -107,11 +106,36 @@ print '<div class="d-flex flex-column min-vh-100">';
             print '</div>';
         print '</div>';
     print '</div>';
+	
+if(isset($_POST['search'])) {
+    // Get search term from form data
+    $search_term = $_POST['search_term'];
 
-	// Get user's bookmarks from API
-	$bookmarks = getUserBookmarks();
-	// Generate HTML for bookmark cards
-	generateBookmarkCards($bookmarks);
+    // Get user's bookmarks from API
+    $bookmarks = getUserBookmarks();
+
+    // Filter bookmarks by search term
+    $matching_bookmarks = array_filter($bookmarks, function($bookmark) use ($search_term) {
+        return strpos($bookmark->displayname, $search_term) !== false;
+    });
+
+    // Display matching bookmarks using generateBookmarkCards function
+    if(count($matching_bookmarks) > 0) {
+        generateBookmarkCards($matching_bookmarks);
+    } else {
+		// Update to display properly 
+        print '<p>No matching bookmarks found.</p>';
+    }
+} else {
+    // Display all bookmarks
+    $bookmarks = getUserBookmarks();
+    if(count($bookmarks) > 0) {
+        generateBookmarkCards($bookmarks);
+    } else {
+		// Update to display properly 
+        print '<p>No bookmarks found.</p>';
+    }
+}
 print '</div>';
 
 print $page->getBottomSection();
