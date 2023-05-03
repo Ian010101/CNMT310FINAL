@@ -45,6 +45,8 @@ if (isset($_POST["submit"])) {
         $_SESSION['loggedIn'] = true;
         // save the user id to the session 
         $_SESSION["id"] = $obj->data->id;
+	// save the user's name to the session
+        $_SESSION["name"] = $obj->data->name;
         die(header("Location: " . BOOKMARKS));
     } else {
         // output result stored in session variable, then goes to LOGIN and is displayed there
