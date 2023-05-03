@@ -23,7 +23,8 @@ if (isset($_POST["url"]) && isset($_POST["title"])) {
     $data = array(
         "url" => $_POST["url"],
         "displayname" => $_POST["title"],    
-        "user_id" => $_SESSION['id']
+        "user_id" => $_SESSION['id'],
+	"shared" => $_POST["shared"]
     );
 
     // Set API action and bookmark fields
