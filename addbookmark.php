@@ -13,18 +13,25 @@ $client = new WebServiceClient($url);
 
 // Check if user is logged in
 if (!isset($_SESSION['id'])) {
-	die(Header("Location: " . BOOKMARKS));
+    die(Header("Location: " . BOOKMARKS));
 }
 
 // Check if form data is submitted
 if (isset($_POST["url"]) && isset($_POST["title"])) {
+    
+    // Determine shared property based on public/private radio button selection
+    if (isset($_POST["visibility"]) && $_POST["visibility"] == "public") {
+        $shared = true;
+    } else {
+        $shared = false;
+    }
     
     // Create data array to send to the API
     $data = array(
         "url" => $_POST["url"],
         "displayname" => $_POST["title"],    
         "user_id" => $_SESSION['id'],
-	"shared" => $_POST["shared"]
+        "shared" => $shared
     );
 
     // Set API action and bookmark fields
