@@ -18,9 +18,7 @@ print '<div class="d-flex flex-column min-vh-100">';
     // Navigation bar 
     print '<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">';
         print '<div class="container-fluid mx-5 px-5 py-2">';
-            print '<a class="navbar-brand sparkBranding" href="' . HOME . '"><img src="images/logo.png" width="50" height="50" class="d-inline-block align-top mx-2"></a>';
-            // Customize navbar with user's full name 
-            print '<span class="navName">' . $_SESSION['name'] . '\'s Sparks</span>';
+            print '<a class="navbar-brand sparkBranding" href="' . HOME . '"><img src="images/logo.png" width="50" height="50" class="d-inline-block align-top mx-2">Spark</a>';
             print '<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">';
                 print '<span class="navbar-toggler-icon"></span>';
             print '</button>';
@@ -42,15 +40,33 @@ print '<div class="d-flex flex-column min-vh-100">';
             print '</div>';
         print '</div>';
     print '</nav>';
-
-
+	
+// Get user's bookmark titles, then adds them into an array
+    $bookmarks = getUserBookmarks();
+	$bookmarksTitle = array();
+	foreach($bookmarks as $bookmark) {
+	array_push($bookmarksTitle, $bookmark->displayname);
+	}
+    //javascript autocomplete function, takes the data from the array just made
+	print '<script type="text/Javascript">
+ $( function() {
+	 let bookmarks = ' . json_encode($bookmarksTitle) . ';
+	 console.log(bookmarks);
+ 	$( "#searchBar" ).autocomplete({
+	source: bookmarks ,
+	minLength: 0,
+	
+	});
+	} );
+</script>';
+	
 		// Search bar
-	   print '<div class="d-flex justify-content-center align-items-center mt-5">'; 
-		print '<div class="container">';
-			print '<div class="row d-flex justify-content-center">';
-				print '<div class="col-12 col-md-8 col-lg-10">';
-					print '<form class="d-flex" action="searchbookmarks.php" method="post">';						// Search bar input and button
-						print '<input class="form-control me-1 inputFocus" type="search" placeholder="Search your bookmarks" aria-label="Search" name="search_term">';
+	   print '<div class="d-flex justify-content-center align-items-center mt-5">
+		 <div class="container">
+			 <div class="row d-flex justify-content-center">
+				 <div class="col-12 col-md-8 col-lg-10">
+					 <form class="d-flex" action="searchbookmarks.php" method="post">';						// Search bar input and button
+						print '<input class="form-control me-1 inputFocus" type="search" placeholder="Search your bookmarks" aria-label="Search" name="search_term" id="searchBar">';
 						print '<button class="btn btn-dark px-4" type="submit" name="search">';
 							print '<img src="images/searchIcon.png">';
 						print '</button>';
@@ -93,9 +109,9 @@ print '<div class="d-flex flex-column min-vh-100">';
 							print '<input type="url" class="form-control inputFocus" id="url" name="url" placeholder="https://example.com" required>';
                         print '</div>';
                         print '<div class="mb-3">';
-                            print '<input type="radio" id="private" name="shared" value="false" checked>';
+                            print '<input type="radio" id="private" name="visibility" value="private" checked>';
                             print '<label for="private">&nbsp;Private</label>&nbsp;&nbsp;&nbsp;';
-                            print '<input type="radio" id="public" name="shared" value="true">';
+                            print '<input type="radio" id="public" name="visibility" value="public">';
                             print '<label for="public">&nbsp;Public</label>';
                         print '</div>';
                         print '<div class="float-end">';
@@ -115,7 +131,6 @@ if(isset($_POST['search'])) {
 
     // Get user's bookmarks from API
     $bookmarks = getUserBookmarks();
-
     // Filter bookmarks by search term
     $matching_bookmarks = array_filter($bookmarks, function($bookmark) use ($search_term) {
         return strpos($bookmark->displayname, $search_term) !== false;
