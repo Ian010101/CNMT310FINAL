@@ -18,7 +18,8 @@ print '<div class="d-flex flex-column min-vh-100">';
     // Navigation bar 
     print '<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">';
         print '<div class="container-fluid mx-5 px-5 py-2">';
-            print '<a class="navbar-brand sparkBranding" href="' . HOME . '"><img src="images/logo.png" width="50" height="50" class="d-inline-block align-top mx-2">Spark</a>';
+            print '<a class="navbar-brand sparkBranding" href="' . HOME . '"><img src="images/logo.png" width="50" height="50" class="d-inline-block align-top mx-2"></a>';
+	    print '<span class="navName">' . $_SESSION['name'] . '\'s Sparks</span>';
             print '<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">';
                 print '<span class="navbar-toggler-icon"></span>';
             print '</button>';
