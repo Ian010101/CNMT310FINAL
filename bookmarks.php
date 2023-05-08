@@ -4,7 +4,10 @@ require_once("autoload.php");
 require_once("getbookmarks.php");
 require_once("bookmarkcards.php");
 require_once("classes/SitePage.class.php");
-
+print '<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">';
+print '<link rel="stylesheet" href="/resources/demos/style.css">';
+print '<script src="https://code.jquery.com/jquery-3.6.0.js"></script>';
+print '<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>';
 // Check if the user is logged in
 if (!isset($_SESSION['id'])) {
     die(header("Location: " . LOGIN));
@@ -18,8 +21,7 @@ print '<div class="d-flex flex-column min-vh-100">';
     // Navigation bar 
     print '<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">';
         print '<div class="container-fluid mx-5 px-5 py-2">';
-            print '<a class="navbar-brand sparkBranding" href="' . HOME . '"><img src="images/logo.png" width="50" height="50" class="d-inline-block align-top mx-2"></a>';
-	    print '<span class="navName">' . $_SESSION['name'] . '\'s Sparks</span>';
+            print '<a class="navbar-brand sparkBranding" href="' . HOME . '"><img src="images/logo.png" width="50" height="50" class="d-inline-block align-top mx-2">Spark</a>';
             print '<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">';
                 print '<span class="navbar-toggler-icon"></span>';
             print '</button>';
@@ -52,7 +54,6 @@ print '<div class="d-flex flex-column min-vh-100">';
 	print '<script type="text/Javascript">
  $( function() {
 	 let bookmarks = ' . json_encode($bookmarksTitle) . ';
-	 console.log(bookmarks);
  	$( "#searchBar" ).autocomplete({
 	source: bookmarks ,
 	minLength: 0,
