@@ -1,12 +1,11 @@
 <?php
-
 // Redirect if accessed directly
 if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
     die(header("Location: " . BOOKMARKS));
 }
-
 // Function to create bookmark cards
 function generateBookmarkCards($bookmarks) {
+	
     // Loop through bookmarks array and generate a card for each bookmark
     foreach ($bookmarks as $bookmark) {
         // Bookmark card 
@@ -20,15 +19,15 @@ function generateBookmarkCards($bookmarks) {
                                     print '<div class="float-end">';
                                         // Delete bookmark button 
                                         print '<button type="button" class="btn btn-light" name="submit">';
-                                            print '<a class="deleteButton" href="deletebookmarks.php?bookmarkID=' . $bookmark->bookmark_id . '">';
+                                            print '<a class="deleteButton" id="deleteBookmark" href="deletebookmarks.php?bookmarkID=' . $bookmark->bookmark_id . '">';
                                                 print '<img class="deleteIcon" src="images/deleteIcon.png">&nbsp;&nbsp;Delete';
                                             print '</a>';
                                         print '</button>';
                                     print '</div>';
                                     // Bookmark title
-									print '<a href="' . $bookmark->url . '" class="bookmarkTitle" target="_blank"><h5>' . $bookmark->displayname . ' | <span class="visitCount">' . $bookmark->visits . '</span> Visits</h5></a>';
+									print '<a href ="addvisit.php?bookmark_id=' . $bookmark->bookmark_id . '&bookmarkurl=' . $bookmark->url .'" class="bookmarkTitle" id="bookmarkVisit" target="_blank"><h5>' . $bookmark->displayname . ' | <span class="visitCount">' . $bookmark->visits . '</span> Visits</h5></a>';
                                     // Bookmark url 
-                                    print '<a href="' . $bookmark->url . '" class="bookmarkURL" target="_blank"><span>' . $bookmark->url . '</span></a>';
+                                    print '<a href="' . $bookmark->url . '" class="bookmarkURL"  target="_blank"><span>' . $bookmark->url . '</span></a>';
                                 print '</div>';
                             print '</div>';    
                         print '</div>';
@@ -37,4 +36,5 @@ function generateBookmarkCards($bookmarks) {
             print '</div>';
         print '</div>';
     }
+	
 }
