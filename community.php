@@ -45,7 +45,7 @@ print '<div class="d-flex flex-column min-vh-100">';
 
 
     // Search bar
-    print '<div class="d-flex justify-content-center align-items-center mt-5">'; 
+    print '<div class="d-flex justify-content-center align-items-center my-5">'; 
         print '<div class="container">';
             print '<div class="row d-flex justify-content-center">';
                 print '<div class="col-12 col-md-8 col-lg-10">';
