@@ -7,9 +7,6 @@ require_once("WebServiceClient.php");
 require_once(__DIR__ . "/../usr_creds.php");
 
 // Redirect if accessed directly
-if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
-    die(header("Location: " . BOOKMARKS));
-}
 
 // set API endpoint url
 $url = "https://cnmt310.classconvo.com/bookmarks/";
