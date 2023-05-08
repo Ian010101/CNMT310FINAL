@@ -33,7 +33,7 @@ print '<div class="d-flex flex-column min-vh-100">';
                         print '<a class="nav-link" aria-current="page" href="' . BOOKMARKS . '">My Bookmarks</a>';
                     print '</li>';
                     print '<li class="nav-item px-2">';
-                        print '<a class="nav-link active" aria-current="page" href="#">Community</a>';
+                        print '<a class="nav-link active" aria-current="page" href="' . COMMUNITY . '">Community</a>';
                     print '</li>';
                     print '<li class="nav-item px-2">';
                         print '<a class="btn btn-outline-light" href="' . LOGOUT . '">Logout</a>'; 
@@ -61,7 +61,50 @@ print '<div class="d-flex flex-column min-vh-100">';
         print '</div>';
     print '</div>'; 
  
+	//Edit bookmark cards or public bookmarks
     //Display public posts here
+	if(isset($_POST['search'])) {
+    // Get search term from form data
+    $search_term = $_POST['search_term'];
+
+    // Get user's bookmarks from API
+    $bookmarks = getPublicBookmarks();
+    // Filter bookmarks by search term
+    $matching_bookmarks = array_filter($bookmarks, function($bookmark) use ($search_term) {
+        return strpos($bookmark->displayname, $search_term) !== false;
+    });
+
+    // Display matching bookmarks using generateBookmarkCards function
+    if(count($matching_bookmarks) > 0) {
+        generateBookmarkCards($matching_bookmarks);
+    } else {
+        print '<div class="d-flex justify-content-center align-items-center mt-2">';
+            print '<div class="container">';
+                print '<div class="row d-flex justify-content-center">';
+                    print '<div class="col-12 col-md-8 col-lg-10">';
+                        print '<p class="errorMessage justify-content-center">No matching bookmarks found.</p>';
+                    print '</div>';
+                print '</div>';
+            print '</div>';
+        print '</div>';
+    }
+} else {
+    // Display all bookmarks
+    $bookmarks = getPublicBookmarks();
+    if(count($bookmarks) > 0) {
+        generateBookmarkCards($bookmarks);
+    } else {
+        print '<div class="d-flex justify-content-center align-items-center mt-2">';
+            print '<div class="container">';
+                print '<div class="row d-flex justify-content-center">';
+                    print '<div class="col-12 col-md-8 col-lg-10">';
+                        print '<p class="errorMessage justify-content-center">No bookmarks found.</p>';
+                    print '</div>';
+                print '</div>';
+            print '</div>';
+        print '</div>';
+    }
+}
 
 print '</div>';
 
