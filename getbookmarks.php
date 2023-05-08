@@ -58,3 +58,56 @@ function getUserBookmarks() {
         }
     }
 }
+
+function getPublicBookmarks() {
+    // set API endpoint url
+    $url = "https://cnmt310.classconvo.com/bookmarks/";
+
+    // Create data array to send to the API
+    $data = array(
+        "user_id" => $_SESSION['id'],
+        "shared" => true
+    );
+
+    // Set API action and bookmark fields
+    $action = "getbookmarks";
+    $fields = array(
+        "apikey" => APIKEY,
+        "apihash" => APIHASH,
+        "data" => $data,
+        "action" => $action
+    );
+
+    // Create WebServiceClient instance
+    $client = new WebServiceClient($url);
+
+    // Set POST fields
+    $client->setPostFields($fields);
+
+    // Call API and get response
+    $response = $client->send();
+
+    // Decode JSON response into php object
+    $obj = json_decode($response);
+
+    // Check if the bookmarks were retrieved successfully
+    if (property_exists($obj, "result") && $obj->result == "Success") {
+        // Extract bookmark data from object
+        $bookmarks = $obj->data;
+
+        // Filter out non-public bookmarks
+        $publicBookmarks = array_filter($bookmarks, function($bookmark) {
+            return $bookmark->shared == true;
+        });
+
+        // Return array of public bookmarks
+        return $publicBookmarks;
+    } else {
+        // Handle error
+        if (property_exists($obj, "data") && property_exists($obj->data, "message")) {
+            die("Error: " . $obj->data->message);
+        } else {
+            die("Error: Unable to retrieve bookmarks.");
+        }
+    }
+}
