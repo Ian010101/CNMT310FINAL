@@ -1,13 +1,9 @@
 <?php
-
 require_once("autoload.php");
 require_once("getbookmarks.php");
 require_once("bookmarkcards.php");
 require_once("classes/SitePage.class.php");
-print '<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">';
-print '<link rel="stylesheet" href="/resources/demos/style.css">';
-print '<script src="https://code.jquery.com/jquery-3.6.0.js"></script>';
-print '<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>';
+
 // Check if the user is logged in
 if (!isset($_SESSION['id'])) {
     die(header("Location: " . LOGIN));
@@ -18,11 +14,12 @@ $page = new SitePage("My Bookmarks");
 print $page->getTopSection();
 
 print '<div class="d-flex flex-column min-vh-100">';
+
     // Navigation bar 
     print '<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">';
         print '<div class="container-fluid mx-5 px-5 py-2">';
             print '<a class="navbar-brand sparkBranding" href="' . HOME . '"><img src="images/logo.png" width="50" height="50" class="d-inline-block align-top mx-2"></a>';
-	    // Customize navbar with user's full name 
+            // Customize navbar with user's full name 
             print '<span class="navName">' . $_SESSION['name'] . '\'s Sparks</span>';
             print '<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">';
                 print '<span class="navbar-toggler-icon"></span>';
@@ -45,25 +42,29 @@ print '<div class="d-flex flex-column min-vh-100">';
             print '</div>';
         print '</div>';
     print '</nav>';
-	
-// Get user's bookmark titles, then adds them into an array
+
+    // Get user's bookmark titles, then adds them into an array
     $bookmarks = getUserBookmarks();
-	$bookmarksTitle = array();
-	foreach($bookmarks as $bookmark) {
-	array_push($bookmarksTitle, $bookmark->displayname);
-	}
-    //javascript autocomplete function, takes the data from the array just made
-	print '<script type="text/Javascript">
- $( function() {
-	 let bookmarks = ' . json_encode($bookmarksTitle) . ';
- 	$( "#searchBar" ).autocomplete({
-	source: bookmarks ,
-	minLength: 0,
-	
-	});
-	} );
-</script>';
-	
+    $bookmarksTitle = array();
+    foreach($bookmarks as $bookmark) {
+        array_push($bookmarksTitle, $bookmark->displayname);
+    }
+
+	print '<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">';
+	print '<script src="https://code.jquery.com/jquery-3.6.0.js"></script>';
+	print '<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>';
+
+    // Javascript autocomplete function, takes the data from the array just made
+    print '<script type="text/Javascript">
+        $( function() {
+            let bookmarks = ' . json_encode($bookmarksTitle) . ';
+            $( "#searchBar" ).autocomplete({
+                source: bookmarks ,
+                minLength: 0,
+            });
+        });
+    </script>';
+
 		// Search bar
 	   print '<div class="d-flex justify-content-center align-items-center mt-5">
 		 <div class="container">
@@ -129,16 +130,16 @@ print '<div class="d-flex flex-column min-vh-100">';
         print '</div>';
     print '</div>';
 	
-if(isset($_POST['search'])) {
-    // Get search term from form data
-    $search_term = $_POST['search_term'];
+	if(isset($_POST['search'])) {
+		// Get search term from form data
+		$search_term = $_POST['search_term'];
 
-    // Get user's bookmarks from API
-    $bookmarks = getUserBookmarks();
-    // Filter bookmarks by search term
-    $matching_bookmarks = array_filter($bookmarks, function($bookmark) use ($search_term) {
-        return strpos($bookmark->displayname, $search_term) !== false;
-    });
+		// Get user's bookmarks from API
+		$bookmarks = getUserBookmarks();
+		// Filter bookmarks by search term
+		$matching_bookmarks = array_filter($bookmarks, function($bookmark) use ($search_term) {
+			return strpos($bookmark->displayname, $search_term) !== false;
+		});
 
     // Display matching bookmarks using generateBookmarkCards function
     if(count($matching_bookmarks) > 0) {
@@ -154,7 +155,7 @@ if(isset($_POST['search'])) {
             print '</div>';
         print '</div>';
     }
-} else {
+	} else {
     // Display all bookmarks
     $bookmarks = getUserBookmarks();
     if(count($bookmarks) > 0) {
