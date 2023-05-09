@@ -24,9 +24,9 @@ function generateBookmarkCards($bookmarks) {
                                         print '</button>';
                                     print '</div>';
                                     // Bookmark title - Added on click event to refresh page, remove if not needed
-                                    print '<a href ="addvisit.php?bookmark_id=' . $bookmark->bookmark_id . '&bookmarkurl=' . $bookmark->url .'" class="bookmarkTitle" id="bookmarkVisit" target="_blank" onclick="location.reload();"><h5>' . $bookmark->displayname . ' | <span class="visitCount">' . $bookmark->visits . '</span> Visits</h5></a>';
+					print '<a href ="addvisit.php?bookmark_id=' . $bookmark->bookmark_id . '&bookmarkurl=' . $bookmark->url .'" class="bookmarkTitle" id="bookmarkVisit" target="_blank" onclick="setTimeout(function(){location.reload();}, 100);"><h5>' . $bookmark->displayname . ' | <span class="visitCount">' . $bookmark->visits . '</span> Visits</h5></a>';
                                     // Bookmark url 
-                                    print '<a href="' . $bookmark->url . '" class="bookmarkURL" target="_blank" onclick="location.reload();"><span>' . $bookmark->url . '</span></a>';
+					print '<a href="' . $bookmark->url . '" class="bookmarkURL" target="_blank" onclick="setTimeout(function(){location.reload();}, 100);"><span>' . $bookmark->url . '</span></a>';
                                 print '</div>';
                             print '</div>';    
                         print '</div>';
@@ -51,9 +51,9 @@ function generatePublicBookmarkCards($bookmarks) {
                             print '<div class="card-body p-3">';
                                 print '<div>';
                                     // Bookmark title - Added on click event to refresh page, remove if not needed
-                                    print '<a href ="addvisit.php?bookmark_id=' . $bookmark->bookmark_id . '&bookmarkurl=' . $bookmark->url .'" class="bookmarkTitle" id="bookmarkVisit" target="_blank" onclick="location.reload();"><h5>' . $bookmark->displayname . ' | <span class="visitCount">' . $bookmark->visits . '</span> Visits</h5></a>';
+					print '<a href ="addvisit.php?bookmark_id=' . $bookmark->bookmark_id . '&bookmarkurl=' . $bookmark->url .'" class="bookmarkTitle" id="bookmarkVisit" target="_blank" onclick="setTimeout(function(){location.reload();}, 100);"><h5>' . $bookmark->displayname . ' | <span class="visitCount">' . $bookmark->visits . '</span> Visits</h5></a>';
                                     // Bookmark url 
-                                    print '<a href="' . $bookmark->url . '" class="bookmarkURL" target="_blank" onclick="location.reload();"><span>' . $bookmark->url . '</span></a>';
+					print '<a href="' . $bookmark->url . '" class="bookmarkURL" target="_blank" onclick="setTimeout(function(){location.reload();}, 100);"><span>' . $bookmark->url . '</span></a>';
                                 print '</div>';
                             print '</div>';    
                         print '</div>';
