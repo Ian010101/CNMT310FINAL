@@ -120,3 +120,11 @@ a.purple:hover {
 .deleteBtn {
     text-decoration: none;
 }
+
+.shared-badge {
+    margin-top: 10px;
+}
+
+.private-badge {
+    margin-top: 10px;
+}
