@@ -6,8 +6,11 @@ require_once("WebServiceClient.php");
 // change name to reflect your user credit file/location
 require_once(__DIR__ . "/../usr_creds.php");
 
-// Redirect if accessed directly
-
+// check if the HTTP_REFERER header is set
+if (!isset($_SERVER['HTTP_REFERER'])) {
+    // redirect the user to another page
+    die(header('Location: ' . HOME));
+}
 // set API endpoint url
 $url = "https://cnmt310.classconvo.com/bookmarks/";
 
