@@ -4,10 +4,7 @@
 if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
     die(header("Location: " . BOOKMARKS));
 }
-
-// Function to create bookmark cards
 function generateBookmarkCards($bookmarks) {
-	
     // Loop through bookmarks array and generate a card for each bookmark
     foreach ($bookmarks as $bookmark) {
         // Bookmark card 
@@ -26,10 +23,10 @@ function generateBookmarkCards($bookmarks) {
                                             print '</a>';
                                         print '</button>';
                                     print '</div>';
-                                    // Bookmark title
-									print '<a href ="addvisit.php?bookmark_id=' . $bookmark->bookmark_id . '&bookmarkurl=' . $bookmark->url .'" class="bookmarkTitle" id="bookmarkVisit" target="_blank"><h5>' . $bookmark->displayname . ' | <span class="visitCount">' . $bookmark->visits . '</span> Visits</h5></a>';
+                                    // Bookmark title - Added on click event to refresh page, remove if not needed
+                                    print '<a href ="addvisit.php?bookmark_id=' . $bookmark->bookmark_id . '&bookmarkurl=' . $bookmark->url .'" class="bookmarkTitle" id="bookmarkVisit" target="_blank" onclick="location.reload();"><h5>' . $bookmark->displayname . ' | <span class="visitCount">' . $bookmark->visits . '</span> Visits</h5></a>';
                                     // Bookmark url 
-                                    print '<a href="' . $bookmark->url . '" class="bookmarkURL"  target="_blank"><span>' . $bookmark->url . '</span></a>';
+                                    print '<a href="' . $bookmark->url . '" class="bookmarkURL" target="_blank" onclick="location.reload();"><span>' . $bookmark->url . '</span></a>';
                                 print '</div>';
                             print '</div>';    
                         print '</div>';
@@ -53,10 +50,10 @@ function generatePublicBookmarkCards($bookmarks) {
                         print '<div class="card bg-white">';
                             print '<div class="card-body p-3">';
                                 print '<div>';
-                                    // Bookmark title
-									print '<a href ="addvisit.php?bookmark_id=' . $bookmark->bookmark_id . '&bookmarkurl=' . $bookmark->url .'" class="bookmarkTitle" id="bookmarkVisit" target="_blank"><h5>' . $bookmark->displayname . ' | <span class="visitCount">' . $bookmark->visits . '</span> Visits</h5></a>';
+                                    // Bookmark title - Added on click event to refresh page, remove if not needed
+                                    print '<a href ="addvisit.php?bookmark_id=' . $bookmark->bookmark_id . '&bookmarkurl=' . $bookmark->url .'" class="bookmarkTitle" id="bookmarkVisit" target="_blank" onclick="location.reload();"><h5>' . $bookmark->displayname . ' | <span class="visitCount">' . $bookmark->visits . '</span> Visits</h5></a>';
                                     // Bookmark url 
-                                    print '<a href="' . $bookmark->url . '" class="bookmarkURL"  target="_blank"><span>' . $bookmark->url . '</span></a>';
+                                    print '<a href="' . $bookmark->url . '" class="bookmarkURL" target="_blank" onclick="location.reload();"><span>' . $bookmark->url . '</span></a>';
                                 print '</div>';
                             print '</div>';    
                         print '</div>';
@@ -65,4 +62,5 @@ function generatePublicBookmarkCards($bookmarks) {
             print '</div>';
         print '</div>';
     }
+	
 }
