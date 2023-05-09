@@ -2,6 +2,12 @@
 
 require_once("autoload.php");
 require_once("classes/SitePage.class.php");
+
+// Redirect to homepage if user is logged in
+if (isset($_SESSION['id'])) {
+    die(header("Location: " . HOME));
+} 
+
 $page = new SitePage("Login");
 
 print $page->getTopSection();
