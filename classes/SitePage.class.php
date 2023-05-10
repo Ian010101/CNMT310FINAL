@@ -1,6 +1,6 @@
 <?php
 
-require_once("/home/abart165/public_html/classes/Page/Page.class.php");
+require_once("classes/Page.class.php");
 
 class SitePage extends Page {
 
