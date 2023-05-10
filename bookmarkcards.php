@@ -33,9 +33,9 @@ function generateBookmarkCards($bookmarks) {
                                     print '<div class="clearfix"></div>';
                                     // Bookmark visibility indicator
 									if ($bookmark->shared) {
-										print '<span class="badge bg-success shared-badge">Public | ID: ' . $bookmark->bookmark_id . '</span>';
+										print '<span class="badge shared-badge">Public | ID: ' . $bookmark->bookmark_id . '</span>';
 									} else {
-										print '<span class="badge bg-danger private-badge">Private | ID: ' . $bookmark->bookmark_id . '</span>';
+										print '<span class="badge private-badge">Private | ID: ' . $bookmark->bookmark_id . '</span>';
 									}
                                 print '</div>';
                             print '</div>';    
@@ -66,7 +66,7 @@ function generatePublicBookmarkCards($bookmarks) {
                                     // New line for badges
                                     print '<div class="clearfix"></div>';
                                     // Bookmark visibility indicator
-									print '<span class="badge bg-success shared-badge">Public | ID: ' . $bookmark->bookmark_id . '</span>';                        
+									print '<span class="badge shared-badge">Public | ID: ' . $bookmark->bookmark_id . '</span>';                        
 							    print '</div>';
                             print '</div>';    
                         print '</div>';
