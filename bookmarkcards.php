@@ -1,5 +1,7 @@
 <?php
 
+require_once("autoload.php"); 
+
 // Redirect if accessed directly
 if (basename($_SERVER['PHP_SELF']) == basename(__FILE__)) {
     die(header("Location: " . BOOKMARKS));
