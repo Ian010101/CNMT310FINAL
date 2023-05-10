@@ -123,7 +123,8 @@ a.purple:hover {
 
 .shared-badge {
     margin-top: 10px;
-    background-color: #8f8f8f;
+    background-color: #e8e8e8;
+    color: #000000
 }
 
 .private-badge {
