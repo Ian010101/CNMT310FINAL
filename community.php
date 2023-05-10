@@ -71,7 +71,7 @@ print '<div class="d-flex flex-column min-vh-100">';
 			 <div class="row d-flex justify-content-center">
 				 <div class="col-12 col-md-8 col-lg-10">
 					 <form class="d-flex" action="searchpublicbookmarks.php" method="post">';						// Search bar input and button
-						print '<input class="form-control me-1 inputFocus" type="search" placeholder="Search your bookmarks" aria-label="Search" name="search_term" id="searchBar">';
+						print '<input class="form-control me-1 inputFocus" type="search" placeholder="Search community bookmarks" aria-label="Search" name="search_term" id="searchBar">';
 						print '<button class="btn btn-dark px-4" type="submit" name="search">';
 							print '<img src="images/searchIcon.png">';
 						print '</button>';
