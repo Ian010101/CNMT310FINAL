@@ -62,7 +62,18 @@ function getUserBookmarks() {
 function getPublicBookmarks() {
     // set API endpoint url
     $url = "https://cnmt310.classconvo.com/bookmarks/";
+    
+    /* Data used to display bookmarks of other users during demo. Used to showcase how a full community page would look
+    $user_ids = array(4, 9, 10);
+    $publicBookmarks = array();
 
+    foreach ($user_ids as $user_id) {
+        $data = array(
+            "user_id" => $user_id,
+            "shared" => true
+        );
+    */
+    
     // Create data array to send to the API
     $data = array(
         "user_id" => $_SESSION['id'],
